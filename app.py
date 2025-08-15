@@ -151,7 +151,8 @@ def sort_by_distance(lat: float, lon: float, shelters: Iterable[Shelter]) -> Lis
 
 
 def create_app() -> Flask:
-    app = Flask(__name__)
+    # static_url_path を空文字にしないことで、アプリをサブパスに載せる際も相対参照で解決可能
+    app = Flask(__name__, static_folder="static", template_folder="templates")
 
     # Basic CORS for simple GET requests
     @app.after_request

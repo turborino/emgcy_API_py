@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>緊急避難場所ビューア（Python版）</title>
-    <link rel="icon" href="/static/shelter-icon.png" />
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" href="static/shelter-icon.png" />
+    <link rel="stylesheet" href="static/style.css" />
     <style>
         .note { color: #555; font-size: 14px; text-align: center; margin: 8px 0; }
         .container { max-width: 980px; margin: 0 auto; }
     </style>
     <script>
-        window.API_BASE = '';
+        // サブパス配下でも動くよう、現在のパスをAPIの基底にする
+        (function(){
+            var p = window.location.pathname;
+            if (!p.endsWith('/')) { p += '/'; }
+            window.API_BASE = p;
+        })();
     </script>
 </head>
 <body>
@@ -36,7 +41,7 @@
     {% if google_api_key %}
     <script async src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap&libraries=marker"></script>
     {% endif %}
-    <script src="/static/app.js"></script>
+    <script src="static/app.js"></script>
 </body>
 </html>
 

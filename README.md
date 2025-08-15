@@ -9,13 +9,15 @@ Python/Flask で実装した API 版です。既存のフロントエンド (`in
 python -m venv .venv
 . .venv/Scripts/Activate.ps1
 pip install -r emgcy_API_py/requirements.txt
-$env:GOOGLE_MAPS_API_KEY=AIzaSyBsLZDipt1qz8E8_fmKmPDtZ_N9AOsqgQc
+$env:GOOGLE_MAPS_API_KEY="<あなたのAPIキー>"
 python emgcy_API_py/app.py
 ```
 
 ブラウザでアクセス:
 - `http://127.0.0.1:8000/` （簡易ビューア UI。Google Maps 表示は `GOOGLE_MAPS_API_KEY` がある場合のみ）
 - API は以下を利用可能（CORS許可済み）
+
+サブパス配下（例: `https://www.hungryclimber.com/emgcy_API_py/`）でも動作するよう相対パス対応済みです。Nginxなどのリバースプロキシ設定で `/emgcy_API_py/` へプロキシしてください。
 
 ## エンドポイント
 
