@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>緊急避難場所ビューア（Python版）</title>
+    <link rel="icon" href="/static/shelter-icon.png" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <style>
+        .note { color: #555; font-size: 14px; text-align: center; margin: 8px 0; }
+        .container { max-width: 980px; margin: 0 auto; }
+    </style>
+    <script>
+        window.API_BASE = '';
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>緊急避難場所アプリ（Python版）</h1>
+        <div class="search-container">
+            <button id="current-location-btn">現在地から探す</button>
+            <div class="zip-search">
+                <input type="text" id="zip-code" placeholder="郵便番号を入力 (7桁)" />
+                <button id="zip-search-btn" {{ 'disabled' if not zip_supported else '' }}>郵便番号で探す</button>
+            </div>
+        </div>
+
+        {% if not zip_supported %}
+        <div class="note">郵便番号検索にはサーバー環境変数 GOOGLE_MAPS_API_KEY が必要です。</div>
+        {% endif %}
+
+        <div id="map"></div>
+        <div id="shelter-list"></div>
+    </div>
+
+    {% if google_api_key %}
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap&libraries=marker"></script>
+    {% endif %}
+    <script src="/static/app.js"></script>
+</body>
+</html>
+
