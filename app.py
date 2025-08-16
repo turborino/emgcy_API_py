@@ -174,7 +174,7 @@ def create_app() -> Flask:
 
     @app.get("/")
     def home():
-        google_api_key = os.environ.get(AIzaSyBsLZDipt1qz8E8_fmKmPDtZ_N9AOsqgQc) or os.environ.get(AIzaSyBsLZDipt1qz8E8_fmKmPDtZ_N9AOsqgQc) or ""
+        google_api_key = os.environ.get("GOOGLE_MAPS_API_KEY") or os.environ.get("GOOGLE_MAPS_API_KEY") or ""
         zip_supported = bool(google_api_key)
         return render_template("index.html", zip_supported=zip_supported, google_api_key=google_api_key)
 
@@ -278,7 +278,7 @@ def create_app() -> Flask:
         if not zip_code or not zip_code.isdigit() or len(zip_code) != 7:
             return jsonify({"error": "zip must be 7 digits (no hyphen)"}), 400
 
-        api_key = os.environ.get(AIzaSyBsLZDipt1qz8E8_fmKmPDtZ_N9AOsqgQc) or os.environ.get(AIzaSyBsLZDipt1qz8E8_fmKmPDtZ_N9AOsqgQc)
+        api_key = os.environ.get("GOOGLE_MAPS_API_KEY") or os.environ.get("GOOGLE_MAPS_API_KEY")
         if not api_key:
             return jsonify({"error": "Server missing GOOGLE_MAPS_API_KEY env var"}), 500
 
