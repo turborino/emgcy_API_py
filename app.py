@@ -1,5 +1,12 @@
 from __future__ import annotations
 
+"""
+このファイルは、Flask を用いた Web サーバーを起動し、
+API エンドポイント（/health, /shelters, /nearest など）で
+「避難場所データの検索・近傍取得・郵便番号検索」を行います。
+また、トップページ（/）のHTMLを返して、簡易ビューアを表示します。
+"""
+
 import csv
 import json
 import math

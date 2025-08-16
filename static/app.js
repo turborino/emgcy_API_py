@@ -1,3 +1,4 @@
+// このファイルは「ブラウザ側の動作（地図表示・最寄り検索・リスト描画）」を行います。
 let map;
 let userMarker;
 let shelterMarkers = [];

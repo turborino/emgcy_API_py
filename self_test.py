@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+"""
+このスクリプトは、Flask アプリの主要APIを自動で叩いて、
+「正常に動くかどうか」を簡単に確認（セルフテスト）します。
+"""
+
 from pprint import pprint
 
 from app import app
